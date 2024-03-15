@@ -5,7 +5,7 @@ import app from "./app";
 dotenv.config();
 
 const port = process.env.PORT;
-const prisma = new PrismaClient();
+export const prisma = new PrismaClient();
 
 async function main() {
   app.listen(port, () => {
