@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { userRepository } from "../repositories/userRepository";
+import { userService } from "../services/userService";
 
 class CreateUserController {
   async execute(req: Request, res: Response) {
     try {
       const { username }: { username: string } = req.body;
-      const newUserWithJwt = await userRepository.create(username);
+      const newUserWithJwt = await userService.create(username);
 
       return res.status(201).send(newUserWithJwt);
     } catch (error: any) {

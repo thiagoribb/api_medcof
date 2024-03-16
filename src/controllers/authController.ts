@@ -1,13 +1,16 @@
 import { Request, Response } from "express";
-import { userRepository } from "../repositories/userRepository";
+import { userService } from "../services/userService";
 
 class AuthController {
   async execute(req: Request, res: Response) {
-    // const { token } = req.headers;
     const token = req.headers.authorization || '';
+    
+    if(!token) {
+      return res.sendStatus(400);
+    }
 
     try {
-      const auth: boolean = await userRepository.authenticate(token); 
+      const auth: boolean = await userService.authenticate(token); 
       if(auth) {
         return res.sendStatus(200);
       }
