@@ -21,6 +21,12 @@ describe("GET /auth", () => {
   });
 
   it("should return status 403 when send a incorrect token", async () => {
+    const user = await prisma.user.create({
+      data: {
+        username: "Fulano",
+      }
+    });
+
     const token = jwt.sign({username: "João Silva"}, secretKey);
 
     const result = await supertest(app).get("/api/auth").set({Authorization: token});
@@ -29,8 +35,18 @@ describe("GET /auth", () => {
   });
 
   it("should return status 400 when dont send token", async () => {
+    const user = await prisma.user.create({
+      data: {
+        username: "Fulano",
+      }
+    });
+
     const result = await supertest(app).get("/api/auth");
 
     expect(result.status).toEqual(400);
   });
+});
+
+beforeEach(async () => {
+  await prisma.user.deleteMany();
 });
