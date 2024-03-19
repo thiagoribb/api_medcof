@@ -12,7 +12,7 @@ jobs:
           envkey_PORT: "4000"
           envkey_DATABASE_URL: "mongodb://usr:password@localhost:27017/medcof_db?authSource=admin"
           envkey_JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
-          directory: api_medcof
+          directory: ${GITHUB_WORKSPACE}
           file_name: .env
       - name: Run tests
         run: docker-compose -f docker-compose-test.yml run mongo npm run test
