@@ -13,4 +13,4 @@ jobs:
       - name: Docker build
         run: docker-compose -f docker-compose-test.yml --env-file .env.test up --build mongo
       - name: Run tests
-        uses: npm run test
+        run: npm run test
