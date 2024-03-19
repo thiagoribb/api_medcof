@@ -1,6 +1,7 @@
 name: Pull Request on Github
 on: [pull_request]
 jobs:
+  name: jest tests
   PullRequest-GitHub:
     runs-on: ubuntu-latest
     steps:
