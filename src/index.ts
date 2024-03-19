@@ -1,11 +1,10 @@
-import { PrismaClient } from "@prisma/client";
 import dotenv from "dotenv";
 import app from "./app";
+import { prisma } from "./prismaClient";
 
 dotenv.config();
 
 const port = process.env.PORT;
-export const prisma = new PrismaClient();
 
 async function main() {
   app.listen(port, () => {

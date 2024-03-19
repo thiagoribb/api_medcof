@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
-import { prisma } from "..";
 import { UserWithToken } from "../interfaces/UserWithToken";
+import { prisma } from "../prismaClient";
 
 const secretKey = process.env.JWT_SECRET_KEY || '';
 

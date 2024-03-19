@@ -5,7 +5,6 @@ export class ValidateSchema {
   constructor(private schema: Joi.ObjectSchema) {}
 
   execute(req: Request, res: Response, next: NextFunction) {
-    console.log(this.schema)
     const validation = this.schema.validate(req.body, { abortEarly: false });
 
     if (validation.error) {
