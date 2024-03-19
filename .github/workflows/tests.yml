@@ -2,7 +2,6 @@ name: Pull Request on Github
 on: [pull_request]
 jobs:
   PullRequest-GitHub:
-    name: tests
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
