@@ -1,7 +1,6 @@
 version: '3.8'
 
 services:
-
   mongo:
     image: prismagraphql/mongo-single-replica:4.4.3-bionic
     restart: always
@@ -9,12 +8,5 @@ services:
       MONGO_INITDB_ROOT_USERNAME: usr
       MONGO_INITDB_ROOT_PASSWORD: password
       MONGO_INITDB_DATABASE: medcof_db
-    env_file:
-      - .env
-    command:
-      - /bin/sh
-      - -c
-      - |
-        mv .env.test .env
     ports:
       - '27017:27017'

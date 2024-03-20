@@ -6,10 +6,12 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
       - name: Install Dependencies
-        run: |
-            echo "${{ secrets.TEST_ENV }}" > .env.test  
-            npm install
+        run: npm install
       - name: Docker build
         run: docker-compose -f docker-compose-test.yml --env-file .env.test up --build -d mongo
       - name: Run tests
