@@ -4,7 +4,7 @@ import { userService } from "../services/userService";
 class AuthController {
   async execute(req: Request, res: Response) {
     const token = req.headers.authorization || '';
-
+    console.log('teste')
     if(!token) {
       return res.sendStatus(400);
     }
